@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE form-validation PUBLIC
+	 "-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.3.0//EN"
+	 "http://jakarta.apache.org/commons/dtds/validator_1_3_0.dtd">
+     
+     
+<form-validation>
+	<formset>
+		<form name="signupform">
+			<field property="firstName" depends="required">
+					<arg key="firstName.error"/>	</field>
+			<field property="lastName" depends="required">
+			<arg key="firstName.error" />
+			</field>
+		<!-- 	<field property="userName">
+			</field>
+			<field property="employeeId">
+			</field>
+			<field property="emailId">
+			</field>
+			<field property="password">
+			</field>
+			<field property="repeatPassword">
+			</field> 
+			
+        <action path="/prepareValidator"
+                type="examples.SuccessAction">
+            <forward name="success" path="/jsp/validator/Validator.jsp"/>
+        </action>
+
+        <action path="/processValidator"
+                type="examples.validator.ProcessValidatorAction"
+                name="validatorForm"
+                scope="request"
+                input="/jsp/validator/Validator.jsp"
+                cancellable="true"
+                validate="true">
+            <set-property property="actionId" value="validatorAction"/>
+            <forward name="success" path="/jsp/validator/ValidatorResults.jsp"/>
+        </action>
+			-->
+
+
+
+
+
+		</form>
+	</formset>
+</form-validation>

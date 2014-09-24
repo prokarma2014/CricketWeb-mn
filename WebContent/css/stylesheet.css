@@ -1,0 +1,151 @@
+html {
+	margin: 0px;
+	width: 100%;
+	height: 100%;
+}
+
+body {
+	margin: 0px;
+	color: rgb(51, 51, 51);
+	line-height: 18px;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	background-image: url(../images/home.jpg);
+}
+
+#logomain {
+	top: 0px;
+	margin-left: 220px;
+	width: 800px;
+}
+
+.logincontent {
+	position: absolute;
+	margin-left: 40%;
+}
+
+#tablogincontent {
+	
+}
+
+#tablogincontent td {
+	padding: 12px;
+}
+
+#HeaderMessage {
+	text-align: center;
+	position: absolute;
+	margin-left: 420px;
+	font-size: 50px;
+	top: 16px;
+	width: 600px;
+}
+
+#menuLinks {
+	margin-left: 9%;
+}
+
+#menuLinks li {
+	display: inline-block;
+	margin-left: 45px;
+}
+
+#menuLinks a {
+	font-size: 15px;
+	padding: 5px;
+}
+
+.headerMenu {
+	border: 2px groove teal;
+	border-style: solid;
+	text-decoration: none;
+	margin: 5pt;
+}
+
+#playerenrollment table {
+	margin-top: 100px;
+	margin-left: 20%;
+	position: relative;
+	float: block;
+	padding: 10px;
+	color: white;
+}
+
+#playerenrollment td {
+	padding: 20px;
+}
+
+#playerenrollment text select {
+	width: 180px;
+}
+
+#teamselection table {
+	margin-top: 191px;
+	margin-left: 40%;
+	position: relative;
+	padding: 10px;
+	color: #FFF;
+	font-family: helvetica, sans-serif;
+	font-weight: bold;
+}
+
+#teamselection td {
+	padding: 20px;
+}
+
+#teamselection text select {
+	width: 180px;
+}
+
+#scoredetails table {
+	margin-top: 100px;
+	margin-left: 20%;
+	position: relative;
+	float: block;
+	padding: 10px;
+	color: white;
+}
+
+#scoredetails td {
+	padding: 20px;
+}
+
+#scoredetails text select {
+	width: 180px;
+}
+
+#teamAvilheadder {
+	text-align: center;
+	position: absolute;
+	margin-left: 420px;
+	font-size: 30px;
+	top: 86px;
+	width: 600px;
+}
+
+#teamAvilcontent table {
+	margin-top: 190px;
+	margin-left: 40%;
+	position: relative;
+	padding: 10px;
+	color: #FFF;
+	float: block;
+}
+
+#teamAvilsubheader {
+	margin-left: 31%;
+	position: absolute;
+	margin-top: 43px;
+	font-size: 21px;
+	color: blue;
+}
+
+#avilContent table,th,td {
+	margin-top: 190px;
+	margin-left: 40%;
+	position: relative;
+	padding: 10px;
+	color: #FFF;
+	border: 1px solid green;
+	border-collapse: collapse;
+}

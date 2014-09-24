@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+          "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+
+<struts-config>
+
+
+	<!-- =================== Form Bean Definitions ==================== -->
+
+	<form-beans>
+
+		<!-- sample form bean descriptor for a DynaActionForm -->
+		<form-bean name="loginform" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="userName" type="java.lang.String" />
+			<form-property name="password" type="java.lang.String" />
+		</form-bean>
+		<form-bean name="signupform" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="firstName" type="java.lang.String"></form-property>
+			<form-property name="lastName" type="java.lang.String"></form-property>
+			<form-property name="userName" type="java.lang.String"></form-property>
+			<form-property name="employeeId" type="java.lang.String"></form-property>
+			<form-property name="emailId" type="java.lang.String"></form-property>
+			<form-property name="password" type="java.lang.String"></form-property>
+			<form-property name="repeatPassword" type="java.lang.String"></form-property>
+		</form-bean>
+
+		<form-bean name="enrollfrom" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="name" type="java.lang.String" />
+			<form-property name="employeeId" type="java.lang.Integer" />
+			<form-property name="personalHighscore" type="java.lang.String" />
+			<form-property name="designation" type="java.lang.String" />
+			<form-property name="bowlingBest" type="java.lang.String" />
+			<form-property name="projectName" type="java.lang.String" />
+			<form-property name="petName" type="java.lang.String" />
+			<form-property name="havePlayed" type="java.lang.String" />
+		</form-bean>
+		<form-bean name="registerform" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="teamName" type="java.lang.String"></form-property>
+			<form-property name="teamID" type="java.lang.String"></form-property>
+			<form-property name="captainName" type="java.lang.String"></form-property>
+			<form-property name="viceCaptainName" type="java.lang.String"></form-property>
+			<form-property name="captainID" type="java.lang.Integer"></form-property>
+			<form-property name="viceCaptainID" type="java.lang.Integer"></form-property>
+			<form-property name="selectPlayers" type="java.lang.String"></form-property>
+			<form-property name="teamLogo" type="org.apache.struts.upload.FormFile"></form-property>
+			<form-property name="selectedPlayers" type="java.lang.String"></form-property>
+		</form-bean>
+		<form-bean name="ScoreDetailsForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="selectedYear" type="java.lang.String"></form-property>
+			<form-property name="selectedPlace" type="java.lang.String"></form-property>
+			<form-property name="selectedMatch" type="java.lang.String"></form-property>
+		</form-bean>
+		
+		<form-bean name="playerAvailform" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="playerName" type="java.lang.String"></form-property>
+			<form-property name="tuesdayNets" type="java.lang.String"></form-property>
+			<form-property name="thursdayNets" type="java.lang.String"></form-property>
+			<form-property name="saturdaymatch" type="java.lang.String"></form-property>
+			<form-property name="currentPlayer" type="java.lang.String"></form-property>
+		</form-bean>
+
+	</form-beans>
+
+
+	<!-- ================ Global Exception Definitions =================== -->
+
+	<global-exceptions>
+		<!-- sample exception handler <exception key="expired.password" type="app.ExpiredPasswordException" 
+			path="/changePassword.jsp"/> end sample -->
+	</global-exceptions>
+
+
+	<!-- ================= Global Forward Definitions ================== -->
+
+	<global-forwards>
+		<!-- Default forward to "Welcome" action -->
+		<!-- Demonstrates using index.jsp to forward -->
+		<forward name="HomePage" path="/Home.do" />
+		<forward name="logout" path="/logout.do"></forward>
+		<forward name="login" path="/login.do" redirect="true" />
+		<forward name="enrollment" path="/enrollment.do" />
+		<forward name="teamSelection" path="/teamSelection.do" />
+		<forward name="scoreDetails" path="/scoreDetails.do" />
+		<forward name="Fixtures" path="/Fixtures.do" />
+		<forward name="welcome" path="/Welcome.do" />
+
+	</global-forwards>
+
+
+
+	<!-- =============== Action Mapping Definitions ==================== -->
+
+	<action-mappings>
+
+
+		<action path="/Welcome" forward="/pages/Welcome.jsp" />
+		<action path="/Home" forward="/jsp/Home.jsp" />
+		<action path="/enrollment" forward="/jsp/PlayerEnrollmentPage.jsp" />
+		<action path="/teamSelection" forward="/jsp/teamSelection.jsp" />
+		<action path="/logout" forward="/jsp/logout.jsp"></action>
+
+		<action path="/Fixtures" forward="/jsp/FixturesOfTournment.jsp" />
+		<!-- sample input and input submit actions <action path="/Input" type="org.apache.struts.actions.ForwardAction" 
+			parameter="/pages/Input.jsp"/> <action path="/InputSubmit" type="app.InputAction" 
+			name="inputForm" scope="request" validate="true" input="/pages/Input.jsp"/> 
+			<action path="/edit*" type="app.Edit{1}Action" name="inputForm" scope="request" 
+			validate="true" input="/pages/Edit{1}.jsp"/> end samples -->
+
+		<action path="/signup" forward="/jsp/signup.jsp"></action>
+
+		<action path="/goHome" forward="/jsp/Home.jsp"></action>
+		<action path="/login" input="loginform" forward="/jsp/login.jsp" />
+
+		<action path="/testjsp" type="com.pkrm.cric.action.TestAction">
+			<forward name="testSuccess" path="/jsp/testJsp.jsp"></forward>
+		</action>
+		<action path="/loginprocess" input="/jsp/login.jsp" validate="true"
+			type="com.pkrm.cric.action.lgoin.LoginAction" name="loginform">
+			<forward name="success" path="/jsp/Home.jsp" />
+			<forward name="failure" path="/jsp/login.jsp" />
+		</action>
+		<action path="/enrolled" input="/jsp/PlayerEnrollmentPage.jsp"
+			validate="true" type="com.pkrm.cric.enrollment.EnrollmentAction"
+			name="enrollfrom">
+			<forward name="success" path="/jsp/enrollSuccess.jsp">
+			</forward>
+			<forward name="failure" path="/jsp/PlayerEnrollmentPage.jsp"></forward>
+		</action>
+
+		<!-- Registration of team -->
+		<action path="/registerprocess" name="registerform" forward="/jsp/register.jsp"
+			type="com.pkrm.cric.action.ProcessRegisterAction">
+			<forward name="success" path="/jsp/teamRegistrationSuccessPage.jsp"></forward>
+		</action>
+
+
+		<action path="/signUpProcess" input="/jsp/signup.jsp"
+			type="com.pkrm.cric.action.SignUpAction" name="signupform" scope="request">
+			<forward name="success" path="/jsp/signupSucces.jsp"></forward>
+			<forward name="failure" path="/jsp/signup.jsp"></forward>
+		</action>
+		<action path="/scoreDetails" type="com.pkrm.cric.action.ScoreDetails">
+			<forward name="success" path="/jsp/scoreDetails.jsp"></forward>
+		</action>
+		<action path="/proccessScoreDetails" type="com.pkrm.cric.action.ProccessScoreDetails"
+			name="ScoreDetailsForm" input="/jsp/scoreDetails.jsp">
+			<forward name="success" path="/jsp/scoreDetails.jsp"></forward>
+		</action>
+
+		<!--Ajax action -->
+		<action path="/hadAjax" type="com.pkrm.cric.action.EnrollDetails">
+			<forward name="success" path="/jsp/enrollAjax.jsp"></forward>
+		</action>
+		<action path="/scoreDetailsPalaceAjax" type="com.pkrm.cric.action.SocreGetPlaces">
+			<forward name="success" path="/jsp/scoreDetailsPalaceAjax.jsp"></forward>
+		</action>
+		<action path="/scoreDetailsMatchesAjax" type="com.pkrm.cric.action.ScoreGetMatches">
+			<forward name="success" path="/jsp/scoreDetailsMatchesAjax.jsp"></forward>
+		</action>
+		
+		<action path="/displayAvalPage" type="com.pkrm.cric.action.DisplayAvalibilityAction"
+		    name="playerAvailform" input="/jsp/dispAvalibilityPage.jsp">
+		    <forward name="success" path="/jsp/dispAvalibilityPage.jsp"/>
+		</action>
+		
+		<action path="" forward="/jsp/dispAvalibilityPage.jsp"></action>
+		
+		<action path="/getAvalibility" type="com.pkrm.cric.action.GetAvalibilityAction"
+		    name="playerAvailform" input="/jsp/dispAvalibilityPage.jsp">
+		    <forward name="success" path="/jsp/dispAvalibilityPage.jsp"/>
+		</action>
+
+
+		<action path="/LogoImageAction" type="com.pkrm.cric.action.TeamLogoAction"></action>
+	</action-mappings>
+
+
+	<!-- ================ Message Resources Definitions =================== -->
+
+	<message-resources parameter="com.pkrm.cric.resouces.application" />
+
+
+	<!-- =============================================== Plug Ins Configuration -->
+
+	<!-- ======================================================= Tiles plugin -->
+	<!-- This plugin initialize Tiles definition factory. This later can takes 
+		some parameters explained here after. The plugin first read parameters from 
+		web.xml, thenoverload them with parameters defined here. All parameters are 
+		optional. The plugin should be declared in each struts-config file. - definitions-config: 
+		(optional) Specify configuration file names. There can be several comma separated 
+		file names (default: ?? ) - moduleAware: (optional - struts1.1) Specify if 
+		the Tiles definition factory is module aware. If true (default), there will 
+		be one factory for each Struts module. If false, there will be one common 
+		factory for all module. In this later case, it is still needed to declare 
+		one plugin per module. The factory will be initialized with parameters found 
+		in the first initialized plugin (generally the one associated with the default 
+		module). true : One factory per module. (default) false : one single shared 
+		factory for all modules - definitions-parser-validate: (optional) Specify 
+		if xml parser should validate the Tiles configuration file. true : validate. 
+		DTD should be specified in file header (default) false : no validation Paths 
+		found in Tiles definitions are relative to the main context. To use this 
+		plugin, download and add the Tiles jar to your WEB-INF/lib directory then 
+		uncomment the plugin definition below. <plug-in className="org.apache.struts.tiles.TilesPlugin" 
+		> <set-property property="definitions-config" value="/WEB-INF/tiles-defs.xml" 
+		/> <set-property property="moduleAware" value="true" /> </plug-in> -->
+
+
+	<!-- =================== Validator plugin ======================= -->
+
+	<!-- <plug-in className="org.apache.struts.validator.ValidatorPlugIn"> <set-property 
+		property="pathnames" value="/org/apache/struts/validator/validator-rules.xml, 
+		/WEB-INF/validation.xml, /WEB-INF/signupValidation.xml, /WEB-INF/loginvalidation.xml, 
+		/WEB-INF/enrollvalidation.xml" /> </plug-in> -->
+
+</struts-config>
+
